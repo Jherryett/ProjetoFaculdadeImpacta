@@ -1,0 +1,16 @@
+.vs/
+bin/
+obj/
+*.user
+*.suo
+*.cache
+*.vscode
+*.db
+*.sqlite
+*.log
+*.tmp
+*.bak
+*.drawio.bkp
+Diagrama UML base.drawio.bkp
+Historico01/
+
