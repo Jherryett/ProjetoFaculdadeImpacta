@@ -11,7 +11,7 @@
 
         public async Task<Roupa> CreateRoupaAsync(Roupa roupa)
         {
-            _context.Roupa.Add(roupa);
+            _context.Roupas.Add(roupa);
             await _context.SaveChangesAsync();
             return roupa;
         }

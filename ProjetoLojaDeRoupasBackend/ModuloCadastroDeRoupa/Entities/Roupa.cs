@@ -2,8 +2,7 @@
 {
     public class Roupa
     {
-        public int? IdRoupa { get; set; }
-        public int? IdCompra {  get; set; }
+        public int Id { get; set; }
         public string? NomeRoupa { get; set; }
         public string? NomeFabricante { get; set; }
 
@@ -16,9 +15,8 @@
 
         public Roupa () { }
 
-        public Roupa (int id, int compra, string nomeRoupa, string nomeFabricante, decimal valorPeca, decimal quantidadeEstoque, string observacoes)
-         {  IdRoupa = id; 
-            IdCompra = compra; 
+        public Roupa ( string nomeRoupa, string nomeFabricante, decimal valorPeca, decimal quantidadeEstoque, string observacoes)
+         {   
             NomeRoupa = nomeRoupa;
             NomeFabricante = nomeFabricante; 
             ValorPeca = valorPeca;

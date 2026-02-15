@@ -28,3 +28,5 @@ global using ProjetoLojaDeRoupas.Entities;
 global using ProjetoLojaDeRoupas.Interfaces;
 global using ProjetoLojaDeRoupas.Services;
 global using ProjetoLojaDeRoupas.Repositories;
+
+global using ProjetoLojaDeRoupas.Context;
