@@ -1,0 +1,7 @@
+﻿o módulo de cadastro de roupa precisa ter esses campos:
+
+Nome da peça
+Tipo da peça 
+Fabricante
+Preço
+quantidade em estoque
