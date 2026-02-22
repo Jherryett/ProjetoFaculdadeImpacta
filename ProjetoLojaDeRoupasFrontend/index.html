@@ -12,6 +12,8 @@
 <h1>Cadastro de Roupas</h1>
 
 <form id="formRoupa">
+    <input type="number" id="codigoRoupa" placeholder="Código" readonly>
+
     <input type="text" id="nomeRoupa" placeholder="Nome da roupa" required>
     <input type="text" id="nomeFabricante" placeholder="Fabricante">
     <input type="number" id="valorPeca" placeholder="Valor da peça" step="0.01">
@@ -19,13 +21,25 @@
     <textarea id="observacoes" placeholder="Observações"></textarea>
 
     <button type="submit">Cadastrar</button>
+    <button id="btnAtualizar" type="button">Atualizar</button>
+    <button id="btnApagar" type="button">Apagar</button>
 </form>
 
 <hr>
 
-<table>
+<div id="acoes">
+    <button id="btnListarTodos" type="button">Listar todos os itens</button>
+
+    <input type="number" id="buscarCodigo" placeholder="Ou buscar por código">
+
+</div>
+
+<hr>
+
+<table id="tabelaRoupas">
     <thead>
         <tr>
+            <th>Código</th>
             <th>Nome</th>
             <th>Fabricante</th>
             <th>Valor</th>
@@ -34,6 +48,8 @@
         </tr>
     </thead>
 
+    <tbody>       
+    </tbody>
 
 </table>
 
