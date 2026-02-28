@@ -13,6 +13,7 @@ form.addEventListener("submit", async (event) => {
 
     const roupa = {
         nomeRoupa: document.getElementById("nomeRoupa").value,
+        tamanho: document.getElementById("tamanhoRoupa").value,
         nomeFabricante: document.getElementById("nomeFabricante").value,
         valorPeca: parseFloat(document.getElementById("valorPeca").value),
         quantidadeEstoque: parseFloat(document.getElementById("quantidadeEstoque").value),
@@ -89,15 +90,16 @@ async function apagarRoupa() {
 function montarRoupa(incluirId) {
 
     const roupa = {
-        NomeRoupa: document.getElementById("nomeRoupa").value,
-        NomeFabricante: document.getElementById("nomeFabricante").value,
-        ValorPeca: document.getElementById("valorPeca").value
+        nomeRoupa: document.getElementById("nomeRoupa").value,
+        tamanho: document.getElementById("tamanhoRoupa").value,
+        nomeFabricante: document.getElementById("nomeFabricante").value,
+        valorPeca: document.getElementById("valorPeca").value
             ? parseFloat(document.getElementById("valorPeca").value)
             : null,
-        QuantidadeEstoque: document.getElementById("quantidadeEstoque").value
+        quantidadeEstoque: document.getElementById("quantidadeEstoque").value
             ? parseFloat(document.getElementById("quantidadeEstoque").value)
             : null,
-        Observacoes: document.getElementById("observacoes").value
+        observacoes: document.getElementById("observacoes").value
     };
 
     if (incluirId) {
@@ -120,6 +122,7 @@ function preencherTabela(roupas) {
         tr.innerHTML = `
             <td>${r.id}</td>
             <td>${r.nomeRoupa}</td>
+            <td>${r.tamanho}</td>
             <td>${r.nomeFabricante}</td>
             <td>${formatarMoeda(r.valorPeca)}</td>
             <td>${r.quantidadeEstoque}</td>
@@ -137,6 +140,7 @@ function carregarNoFormulario(roupa) {
 
     document.getElementById("codigoRoupa").value = roupa.id;
     document.getElementById("nomeRoupa").value = roupa.nomeRoupa ?? "";
+    document.getElementById("tamanhoRoupa").value = roupa.tamanho ?? "";
     document.getElementById("nomeFabricante").value = roupa.nomeFabricante ?? "";
     document.getElementById("valorPeca").value = roupa.valorPeca ?? "";
     document.getElementById("quantidadeEstoque").value = roupa.quantidadeEstoque ?? "";
