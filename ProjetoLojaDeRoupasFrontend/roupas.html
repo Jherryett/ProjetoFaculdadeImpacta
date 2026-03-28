@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Cadastro de Roupas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+<h1>Cadastro de Roupas</h1>
+
+<form id="formRoupa">
+    <input type="number" id="codigoRoupa" placeholder="Código" readonly>
+
+    <input type="text" id="nomeRoupa" placeholder="Nome da roupa" required>
+    <input type="text" id="tamanhoRoupa" placeholder="Tamanho da roupa" required>
+    <input type="text" id="nomeFabricante" placeholder="Fabricante">
+    <input type="number" id="valorPeca" placeholder="Valor da peça" step="0.01">
+    <input type="number" id="quantidadeEstoque" placeholder="Quantidade em estoque" step="0.01">
+    <textarea id="observacoes" placeholder="Observações"></textarea>
+
+    <button type="submit">Cadastrar</button>
+    <button id="btnAtualizar" type="button">Atualizar</button>
+    <button id="btnApagar" type="button">Apagar</button>
+</form>
+
+<hr>
+
+<div id="acoes">
+    <button id="btnListarTodos" type="button">Listar todos os itens</button>
+
+    <input type="number" id="buscarCodigo" placeholder="Ou buscar por código">
+
+</div>
+
+<hr>
+
+<table id="tabelaRoupas">
+    <thead>
+        <tr>
+            <th>Código</th>
+            <th>Nome</th>
+            <th>Tamanho</th>
+            <th>Fabricante</th>
+            <th>Valor</th>
+            <th>Quantidade</th>
+            <th>Observações</th>
+        </tr>
+    </thead>
+
+    <tbody>       
+    </tbody>
+
+</table>
+
+<script src="scriptRoupas.js"></script>
+</body>
+</html>

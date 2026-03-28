@@ -8,3 +8,6 @@ SELECT * FROM dbo.Roupas;
 
 SELECT DB_NAME();
 
+
+SELECT * 
+FROM Roupas
