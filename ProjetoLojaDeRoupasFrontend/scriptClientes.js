@@ -14,9 +14,9 @@ form.addEventListener("submit", async (event) => {
     const cliente = {
         nomeCliente: document.getElementById("nomeCliente").value,
         dataNascimento: document.getElementById("dataNascimento").value,
-        cpd: document.getElementById("cpf").value,
+        cpf: document.getElementById("cpf").value,
         numeroTelefone: document.getElementById ("numeroTelefone").value,
-        email: document.getElementById ("email").value,
+        emailCliente: document.getElementById ("email").value,
         observacoes: document.getElementById("observacoes").value
     };
 
@@ -26,7 +26,7 @@ form.addEventListener("submit", async (event) => {
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(roupa)
+            body: JSON.stringify(cliente)
         });
 
         if (!response.ok) {
@@ -47,16 +47,26 @@ btnListarTodos.addEventListener("click", listarTodos);
 
 async function listarTodos() {
     const response = await fetch("https://localhost:7179/api/clientes");
-    const roupas = await response.json();
-    preencherTabela(roupas); }
+    
+    const texto = await response.text();
+    console.log("RAW:", texto);
 
+    const dados = JSON.parse(texto);
+    console.log("JSON:", dados);
 
+    const clientes = Array.isArray(dados) ? dados : dados.$values;
+
+    console.log("FINAL:", clientes);
+
+    preencherTabela(clientes);
+
+}
 
 
 btnAtualizar.addEventListener("click", atualizarCliente);
 
 async function atualizarCliente() {
-    const roupa = montarRoupa(true);
+    const cliente = montarCliente(true);
 
     await fetch("https://localhost:7179/api/clientes", {
         method: "PUT",
@@ -71,7 +81,7 @@ async function atualizarCliente() {
 btnApagar.addEventListener("click", apagarCliente);
 
 async function apagarCliente() {
-    const id = document.getElementById("codigoRoupa").value;
+    const id = document.getElementById("codigoCliente").value;
 
     if (!id) {
         alert("Informe o código");
@@ -92,9 +102,9 @@ function montarCliente(incluirId) {
     const cliente = {
         nomeCliente: document.getElementById("nomeCliente").value,
         dataNascimento: document.getElementById("dataNascimento").value,
-        cpd: document.getElementById("cpf").value,
+        cpf: document.getElementById("cpf").value.replace(/\D/g, ""),
         numeroTelefone: document.getElementById ("numeroTelefone").value,
-        email: document.getElementById ("email").value,
+        emailCliente: document.getElementById ("email").value,
         observacoes: document.getElementById("observacoes").value   
     };
 
@@ -118,10 +128,10 @@ function preencherTabela(clientes) {
         tr.innerHTML = `
             <td>${r.id}</td>
             <td>${r.nomeCliente}</td>
-            <td>${r.dataNascimento}</td>
-            <td>${r.cpf}</td>
-            <td>${r.numeroTelefone}</td>
-            <td>${r.email}</td>
+            <td>${formatarData(r.dataNascimento)}</td>
+            <td>${formatarCPF(r.cpf)}</td>
+            <td>${formatarTelefone(r.numeroTelefone)}</td>
+            <td>${r.emailCliente}</td>
             <td>${r.observacoes}</td>
         `;
 
@@ -137,9 +147,9 @@ function carregarNoFormulario(cliente) {
     document.getElementById("codigoCliente").value = cliente.id;
     document.getElementById("nomeCliente").value = cliente.nomeCliente ?? "";
     document.getElementById("dataNascimento").value = cliente.dataNascimento ?? "";
-    document.getElementById("cpf").value = cliente.cpf ?? "";
+    document.getElementById("cpf").value = formatarCPF(cliente.cpf);
     document.getElementById("numeroTelefone").value = cliente.numeroTelefone ?? "";
-    document.getElementById("email").value = cliente.email ?? "";
+    document.getElementById("email").value = cliente.emailCliente ?? "";
     document.getElementById("observacoes").value = cliente.observacoes ?? "";
 }
 
@@ -166,7 +176,7 @@ async function buscarPorCodigo() {
             return;
         }
 
-        const roupa = await response.json();
+        const cliente = await response.json();
 
         preencherTabela([cliente]);
         carregarNoFormulario(cliente);
@@ -177,3 +187,38 @@ async function buscarPorCodigo() {
     }
 }
 
+function formatarData(data) {
+    if (!data) return "";
+
+    const d = new Date(data);
+    return d.toLocaleDateString("pt-BR");
+}
+
+function formatarCPF(cpf) {
+    if (!cpf) return "";
+
+    cpf = cpf.toString().replace(/\D/g, "");
+
+  
+    cpf = cpf.padStart(11, "0");
+
+    return cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
+}
+
+function formatarTelefone(tel) {
+    if (!tel) return "";
+
+    tel = tel.replace(/\D/g, "");
+
+    if (tel.length === 11) {
+        return tel.replace(/(\d{2})(\d{5})(\d{4})/, 
+            "($1) $2-$3");
+    }
+
+    if (tel.length === 10) {
+        return tel.replace(/(\d{2})(\d{4})(\d{4})/, 
+            "($1) $2-$3");
+    }
+
+    return tel;
+}

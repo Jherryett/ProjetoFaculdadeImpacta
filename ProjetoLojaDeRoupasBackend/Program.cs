@@ -10,6 +10,8 @@ builder.Services.AddControllers();
 builder.Services.AddScoped<IRoupaRepository, RoupaRepository>();
 builder.Services.AddScoped<IRoupaService, RoupaService>();
 
+builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
+builder.Services.AddScoped<IClienteService, ClienteService>();
 
 builder.Services.AddControllers();
 

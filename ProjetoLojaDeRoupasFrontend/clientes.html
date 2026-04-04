@@ -3,13 +3,24 @@
 <html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
-    <title>Cadastro de Roupas</title>
+    <title>Cadastro de Clientes</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
-
 <body>
-<h1>Cadastro de Roupas</h1>
+
+<div style="margin-top: 20px;">
+    <a href="index.html">
+        <button>Página Principal</button>
+    </a>
+
+    <a href="roupas.html">
+        <button>Cadastro de Roupas</button>
+    </a>
+</div>
+
+
+<h1>Cadastro de Clientes</h1>
 
 <form id="formCliente">
     <input type="number" id="codigoCliente" placeholder="Código" readonly>
@@ -36,7 +47,7 @@
 
 <hr>
 
-<table id="tabelaRoupas">
+<table id="tabelaClientes">
     <thead>
         <tr>
             <th>Código</th>
@@ -54,6 +65,6 @@
 
 </table>
 
-<script src="script.js"></script>
+<script src="scriptClientes.js"></script>
 </body>
 </html>
