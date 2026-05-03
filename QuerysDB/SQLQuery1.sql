@@ -11,3 +11,6 @@ SELECT DB_NAME();
 
 SELECT * 
 FROM Roupas
+
+SELECT * 
+FROM Clientes

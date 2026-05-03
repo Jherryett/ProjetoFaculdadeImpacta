@@ -13,6 +13,9 @@ builder.Services.AddScoped<IRoupaService, RoupaService>();
 builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
 builder.Services.AddScoped<IClienteService, ClienteService>();
 
+builder.Services.AddScoped<ICarrinhoRepository, CarrinhoRepository>();
+builder.Services.AddScoped<ICarrinhoService, CarrinhoService>();
+
 builder.Services.AddControllers();
 
 builder.Services.AddCors(options =>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8" />
+    <title>Carrinho de Compras</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div style="margin-top: 20px;">
+    <a href="index.html">
+        <button>Página Principal</button>
+    </a>
+
+    <a href="clientes.html">
+        <button>Cadastro de Clientes</button>
+    </a>
+
+    <a href="roupas.html">
+        <button>Cadastro de Roupas</button>
+    </a>
+</div>
+
+<h1>Carrinho de Compras</h1>
+
+
+<div>
+    <label>Cliente:</label>
+    <select id="clienteSelect"></select>
+
+    <label>Produto:</label>
+    <select id="produtoSelect"></select>
+
+    <label>Quantidade:</label>
+    <input type="number" id="quantidade" value="1" min="1">
+
+    <button onclick="adicionarAoCarrinho()">Adicionar</button>
+</div>
+
+<hr>
+
+
+<h2>Itens do Carrinho</h2>
+
+<table id="tabelaCarrinho">
+    <thead>
+        <tr>
+            <th>Produto</th>
+            <th>Quantidade</th>
+            <th>Valor Unitário</th>
+            <th>Subtotal</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+
+    <tbody></tbody>
+</table>
+
+<h2 id="totalCarrinho">Total: R$ 0,00</h2>
+
+<script src="scriptCarrinho.js"></script>
+</body>
+</html>
